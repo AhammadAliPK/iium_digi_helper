@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { LoginPage } from './pages';
 import { RegisterPage } from './pages';
 import { AdminDashboard } from './pages';
+import HandlerDashboard from './pages/HandlerDashboard';
 
 export default function App() {
   return (
@@ -9,6 +10,7 @@ export default function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/dashboard/admin" element={<AdminDashboard />} />
+      <Route path="/dashboard/handler" element={<HandlerDashboard />} />
       <Route path="/" element={<Navigate to="/login" replace />} />
       <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>

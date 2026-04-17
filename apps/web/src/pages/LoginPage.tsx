@@ -64,19 +64,27 @@ export default function LoginPage() {
 
       if (response.ok) {
         // Store user info in localStorage for client-side access
-        localStorage.setItem('user', JSON.stringify(data.data.user));
+        const user = data.data.user;
+        localStorage.setItem('user', JSON.stringify(user));
+
+        console.log('Login successful, user role:', user.role);
+
         // Navigate based on role
-        switch (data.data.user.role) {
+        switch (user.role) {
           case 'REQUESTER':
+            console.log('Navigating to requester dashboard');
             navigate('/dashboard/requester');
             break;
           case 'HANDLER':
+            console.log('Navigating to handler dashboard');
             navigate('/dashboard/handler');
             break;
           case 'ADMIN':
+            console.log('Navigating to admin dashboard');
             navigate('/dashboard/admin');
             break;
           default:
+            console.log('Unknown role, navigating to default dashboard');
             navigate('/dashboard');
         }
       } else {

@@ -105,6 +105,11 @@
     --iium-text-muted: rgba(255, 255, 255, 0.45);
     --iium-text-accent: #D59F0F;
 
+    /* --- DARK THEME SPECIFIC STYLES --- */
+    --iium-card-bg: #0F2B26;
+    --iium-card-border: rgba(0, 146, 143, 0.2);
+    --iium-stat-bg: rgba(255, 255, 255, 0.03);
+
     /* Tailwind-compatible dark theme tokens */
     --background: 180 3% 6%;
     --foreground: 0 0% 100%;

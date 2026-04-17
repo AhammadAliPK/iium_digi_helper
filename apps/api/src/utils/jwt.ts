@@ -1,6 +1,7 @@
 import { SignJWT, jwtVerify } from 'jose';
 import { readFileSync } from 'fs';
 import { join } from 'path';
+import { FastifyRequest, FastifyReply } from 'fastify';
 
 // Load RSA keys
 const PRIVATE_KEY_PATH = join(process.cwd(), 'config/jwt/private.key');
@@ -49,5 +50,45 @@ export async function verifyToken(token: string): Promise<JWTPayload> {
     return payload as unknown as JWTPayload;
   } catch (error) {
     throw new Error('Invalid or expired token');
+  }
+}
+
+export async function authenticateToken(request: FastifyRequest, reply: FastifyReply) {
+  try {
+    // Try cookie first (existing pattern)
+    let token = request.cookies.token;
+
+    // Fallback to Authorization header
+    if (!token && request.headers.authorization) {
+      token = request.headers.authorization.replace('Bearer ', '');
+    }
+
+    if (!token) {
+      return reply.status(401).send({
+        success: false,
+        error: {
+          message: 'No token provided',
+          code: 'NO_TOKEN'
+        }
+      });
+    }
+
+    const payload = await verifyToken(token);
+    request.user = payload;
+  } catch (error) {
+    return reply.status(401).send({
+      success: false,
+      error: {
+        message: 'Invalid or expired token',
+        code: 'INVALID_TOKEN'
+      }
+    });
+  }
+}
+
+// Extend FastifyRequest type to include user
+declare module 'fastify' {
+  interface FastifyRequest {
+    user?: JWTPayload;
   }
 }

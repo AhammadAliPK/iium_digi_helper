@@ -6,7 +6,8 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src')
+      '@': path.resolve(__dirname, './src'),
+      '@iium-portal/ui': path.resolve(__dirname, '../../packages/ui/src'),
     }
   },
   server: {
@@ -16,6 +17,15 @@ export default defineConfig({
         target: 'http://localhost:3001',
         changeOrigin: true
       }
+    }
+  },
+  optimizeDeps: {
+    include: ['@iium-portal/ui'],
+    exclude: []
+  },
+  build: {
+    commonjsOptions: {
+      transformMixedEsModules: true
     }
   }
 });
