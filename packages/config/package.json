@@ -3,10 +3,18 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./tsconfig": "./tsconfig.json",
+    "./eslint-config": "./eslint-config.js",
+    "./tailwind.config": "./tailwind.config.js",
+    "./prettier-config": "./prettier-config.js"
+  },
   "scripts": {
-    "clean": "rm -rf node_modules .turbo"
+    "clean": "rm -rf dist node_modules .turbo"
   },
   "files": [
+    "index.js",
     "eslint-config.js",
     "tsconfig.json",
     "tailwind.config.js",

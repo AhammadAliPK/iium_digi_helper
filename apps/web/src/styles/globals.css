@@ -4,81 +4,274 @@
 
 @layer base {
   :root {
-    /* IIUM Brand Colors */
-    --primary: 142 67% 26%; /* Teal #008670 */
+    /* IIUM OFFICIAL BRAND COLORS - From DLS */
+    --iium-teal: #008670; /* Primary IIUM Teal */
+    --iium-gold: #CDB067; /* Accent IIUM Gold */
+    --iium-black: #000000;
+
+    /* DARK PRODUCT SURFACE ARCHITECTURE */
+    --iium-deep: #030F0D; /* Deep teal-black base background */
+    --iium-surface: #081D1A; /* Standard component background */
+    --iium-surface-raised: #0F2B26; /* Hover / Active surface */
+
+    /* BORDERS & SEMANTICS */
+    --iium-border-subtle: rgba(0, 134, 112, 0.2);
+    --iium-border-active: rgba(205, 176, 103, 0.4);
+    --iium-glass: rgba(255, 255, 255, 0.03);
+
+    /* TEXT STATES */
+    --iium-text-primary: #FFFFFF;
+    --iium-text-secondary: rgba(255, 255, 255, 0.75);
+    --iium-text-muted: rgba(255, 255, 255, 0.45);
+    --iium-text-accent: #CDB067;
+
+    /* ANIMATION & RADIUS */
+    --iium-radius-lg: 14px;
+    --iium-radius-sm: 8px;
+    --iium-ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+    --iium-duration: 250ms;
+
+    /* Tailwind-compatible color tokens */
+    --background: 180 3% 6%;
+    --foreground: 0 0% 100%;
+
+    --card: 183 47% 6%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 183 47% 6%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 142 67% 26%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 45 53% 60%; /* Gold #CDB067 */
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 45 53% 60%;
+    --secondary-foreground: 0 0% 0%;
 
-    --background: 0 0% 100%;
-    --foreground: 180 2% 8%;
+    --muted: 180 47% 6%;
+    --muted-foreground: 180 5% 45%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 180 2% 8%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 180 2% 8%;
-
-    --muted: 180 2% 96%;
-    --muted-foreground: 180 2% 40%;
-
-    --accent: 180 2% 96%;
-    --accent-foreground: 180 2% 8%;
+    --accent: 180 47% 6%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 180 2% 90%;
-    --input: 180 2% 90%;
+    --border: 142 67% 26% / 0.2;
+    --input: 142 67% 26% / 0.2;
     --ring: 142 67% 26%;
 
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 180 2% 4%;
-    --foreground: 0 0% 98%;
-
-    --card: 180 2% 6%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 180 2% 6%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 142 67% 36%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 45 53% 70%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 180 2% 12%;
-    --muted-foreground: 180 2% 70%;
-
-    --accent: 180 2% 12%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 180 2% 12%;
-    --input: 180 2% 12%;
-    --ring: 142 67% 36%;
+    --radius: 0.8rem;
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
+
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--iium-deep);
+    color: var(--iium-text-primary);
     font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto Slab', serif;
+    font-weight: 700;
   }
-  label, button, .label {
+
+  /* Focus states with teal color */
+  *:focus-visible {
+    outline: none;
+    ring: 2px;
+    ring-color: var(--iium-teal);
+    ring-offset: 2px;
+    ring-offset-color: var(--iium-deep);
+  }
+
+  /* Selection color */
+  ::selection {
+    background-color: var(--iium-teal);
+    color: white;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--iium-surface);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--iium-border-subtle);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--iium-border-active);
+  }
+}
+
+@layer components {
+  /* Token Badge Row */
+  .token-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--iium-border-subtle);
+    font-family: monospace;
+    font-size: 13px;
+  }
+  .token-name { color: var(--iium-gold); }
+
+  /* IIUM Button Styles - Exact DLS .btn classes */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    border-radius: var(--iium-radius-sm);
+    font-weight: 700;
+    cursor: pointer;
+    transition: 200ms ease;
+    border: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     font-family: 'Barlow Condensed', sans-serif;
+  }
+
+  .btn-primary {
+    background: var(--iium-teal);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #006b5a;
+    transform: translateY(-2px);
+  }
+
+  .btn-gold {
+    background: var(--iium-gold);
+    color: #000;
+  }
+
+  .btn-gold:hover {
+    background: #b89a55;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--iium-text-primary);
+    border: 1px solid var(--iium-border-subtle);
+  }
+
+  .btn-ghost:hover {
+    background: var(--iium-glass);
+    border-color: var(--iium-border-active);
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--iium-teal);
+    color: var(--iium-teal);
+  }
+
+  .btn-outline:hover {
+    background: rgba(0, 134, 112, 0.1);
+  }
+
+  .btn-link {
+    background: transparent;
+    color: var(--iium-teal);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .btn-link:hover {
+    text-decoration: underline;
+  }
+
+  /* IIUM Card Styles - Exact DLS .iium-card */
+  .iium-card {
+    background: var(--iium-surface);
+    border: 1px solid var(--iium-border-subtle);
+    border-radius: var(--iium-radius-lg);
+    padding: 32px;
+    transition: all var(--iium-duration) var(--iium-ease-spring);
+  }
+
+  .iium-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--iium-gold);
+    background: var(--iium-surface-raised);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  /* IIUM Form Control Styles - Exact DLS .form-control */
+  .form-control {
+    background: var(--iium-glass);
+    border: 1px solid var(--iium-border-subtle);
+    padding: 14px;
+    border-radius: var(--iium-radius-sm);
+    color: white;
+    width: 100%;
+    margin-top: 8px;
+    font-family: 'Inter', sans-serif;
+    transition: all 200ms ease;
+  }
+
+  .form-control:focus {
+    border-color: var(--iium-teal);
+    outline: none;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .form-control::placeholder {
+    color: var(--iium-text-muted);
+  }
+
+  /* IIUM Label Styles - Exact DLS .brand-label */
+  .brand-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--iium-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+
+  /* Container utilities */
+  .dls-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--iium-border-subtle);
+  }
+}
+
+@layer utilities {
+  /* Text balance for headings */
+  .text-balance {
+    text-wrap: balance;
   }
 }

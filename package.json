@@ -6,13 +6,21 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "dev:all": "concurrently \"pnpm --filter web dev\" \"pnpm --filter api dev\" --names \"frontend,backend\" --prefix-colors \"cyan,green\"",
+    "dev:web": "pnpm --filter web dev",
+    "dev:api": "pnpm --filter api dev",
     "lint": "turbo run lint",
     "test": "turbo run test",
     "clean": "turbo run clean",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\""
   },
   "devDependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "concurrently": "^9.2.1",
     "prettier": "^3.5.3",
+    "tailwind-merge": "^3.0.2",
+    "tailwindcss-animate": "^1.0.7",
     "turbo": "^2.4.2",
     "typescript": "^5.8.0"
   },

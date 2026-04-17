@@ -1,5 +1,4 @@
 {
-  "extends": "@iium-portal/config/tsconfig",
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
