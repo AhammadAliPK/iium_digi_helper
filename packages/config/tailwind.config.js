@@ -15,21 +15,46 @@ module.exports = {
     },
     extend: {
       colors: {
-        // IIUM Official Brand Colors
+        // IIUM Official Brand Colors (from Visual Identity System 2021)
         iium: {
-          teal: '#008670',
-          gold: '#CDB067',
+          // Primary Corporate Colours
+          turquoise: '#00928F', // PANTONE 7716 C - Official IIUM Turquoise
+          gold: '#D59F0F',      // PANTONE 7555 C - Official IIUM Gold
+          teal: '#00928F',      // Alias for turquoise
           black: '#000000',
-          deep: '#030F0D',
-          surface: '#081D1A',
-          'surface-raised': '#0F2B26',
-          'border-subtle': 'rgba(0, 134, 112, 0.2)',
-          'border-active': 'rgba(205, 176, 103, 0.4)',
-          glass: 'rgba(255, 255, 255, 0.03)',
-          'text-primary': '#FFFFFF',
-          'text-secondary': 'rgba(255, 255, 255, 0.75)',
-          'text-muted': 'rgba(255, 255, 255, 0.45)',
-          'text-accent': '#CDB067'
+          white: '#FFFFFF',
+
+          // Light Product Surface Architecture
+          deep: '#FFFFFF',
+          surface: '#F8FAFC',
+          'surface-raised': '#FFFFFF',
+
+          // Borders & Semantics (light mode)
+          'border-subtle': 'rgba(0, 146, 143, 0.15)',
+          'border-active': 'rgba(213, 159, 15, 0.3)',
+          glass: 'rgba(0, 146, 143, 0.04)',
+
+          // Text States (light mode)
+          'text-primary': '#1A202C',
+          'text-secondary': '#4A5568',
+          'text-muted': '#718096',
+          'text-accent': '#D59F0F',
+
+          // Kulliyyah Accent Colours (for thematic usage)
+          'kict-green': '#00A850',       // Kulliyyah of ICT
+          'kenms-yellow': '#FFF200',     // Kulliyyah of Economics
+          'koed-blue': '#005DAC',        // Kulliyyah of Education
+          'kirhs-grey': '#CAD1D3',       // Kulliyyah of IRKHS
+          'koe-maroon': '#840715',       // Kulliyyah of Engineering
+          'kos-orange': '#F6871F',       // Kulliyyah of Science
+          'kaed-purple': '#7A2A90',      // Kulliyyah of Architecture
+          'kom-pink': '#F177AE',         // Kulliyyah of Medicine
+          'kop-cream': '#FFFABE',        // Kulliyyah of Pharmacy
+          'kahs-bright-pink': '#EC008C', // Allied Health Sciences
+          'kon-peach': '#FFDDB3',        // Kulliyyah of Nursing
+          'kod-dark-purple': '#470054',  // Kulliyyah of Dentistry
+          'istac-red': '#EE202E',        // ISTAC
+          'airol-black': '#231F20'       // Ahmad Ibrahim Kulliyyah of Laws
         },
         // Tailwind-compatible theme colors
         border: 'hsl(var(--border))',

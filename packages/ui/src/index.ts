@@ -8,6 +8,7 @@ export { Button, buttonVariants } from './components/ui/button';
 export { Input } from './components/ui/input';
 export { Textarea } from './components/ui/textarea';
 export { Label } from './components/ui/label';
+export { Select } from './components/ui/select';
 export {
   Card,
   CardHeader,

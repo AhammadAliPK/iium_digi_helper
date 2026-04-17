@@ -4,34 +4,108 @@
 
 @layer base {
   :root {
-    /* IIUM OFFICIAL BRAND COLORS - From DLS */
-    --iium-teal: #008670; /* Primary IIUM Teal */
-    --iium-gold: #CDB067; /* Accent IIUM Gold */
+    /* ============================================================
+       IIUM OFFICIAL BRAND COLORS - Visual Identity System 2021
+       ============================================================ */
+
+    /* --- PRIMARY CORPORATE COLOURS --- */
+    --iium-turquoise: #00928F; /* PANTONE 7716 C - Official IIUM Turquoise */
+    --iium-gold: #D59F0F;      /* PANTONE 7555 C - Official IIUM Gold */
     --iium-black: #000000;
+    --iium-white: #FFFFFF;
 
-    /* DARK PRODUCT SURFACE ARCHITECTURE */
-    --iium-deep: #030F0D; /* Deep teal-black base background */
-    --iium-surface: #081D1A; /* Standard component background */
-    --iium-surface-raised: #0F2B26; /* Hover / Active surface */
+    /* --- LEGACY TOKEN (mapped to turquoise for compatibility) --- */
+    --iium-teal: #00928F; /* Alias for --iium-turquoise */
 
-    /* BORDERS & SEMANTICS */
-    --iium-border-subtle: rgba(0, 134, 112, 0.2);
-    --iium-border-active: rgba(205, 176, 103, 0.4);
-    --iium-glass: rgba(255, 255, 255, 0.03);
+    /* --- LIGHT THEME SURFACE ARCHITECTURE --- */
+    --iium-deep: #FFFFFF;          /* Pure white base background */
+    --iium-surface: #F8FAFC;       /* Light gray-blue component background */
+    --iium-surface-raised: #FFFFFF; /* Card/elevated surface */
 
-    /* TEXT STATES */
-    --iium-text-primary: #FFFFFF;
-    --iium-text-secondary: rgba(255, 255, 255, 0.75);
-    --iium-text-muted: rgba(255, 255, 255, 0.45);
-    --iium-text-accent: #CDB067;
+    /* --- BORDERS & SEMANTICS --- */
+    --iium-border-subtle: rgba(0, 146, 143, 0.15);   /* Subtle turquoise border */
+    --iium-border-active: rgba(213, 159, 15, 0.3);   /* Gold border for focus */
+    --iium-glass: rgba(0, 146, 143, 0.04);           /* Subtle tinted glass */
 
-    /* ANIMATION & RADIUS */
+    /* --- TEXT STATES --- */
+    --iium-text-primary: #1A202C;     /* Dark gray for primary text */
+    --iium-text-secondary: #4A5568;   /* Medium gray for secondary text */
+    --iium-text-muted: #718096;       /* Light gray for muted text */
+    --iium-text-accent: #D59F0F;      /* Gold for accents */
+
+    /* --- KULLIYYAH ACCENT COLOURS (for thematic usage) --- */
+    --iium-kict-green: #00A850;       /* Kulliyyah of ICT */
+    --iium-kenms-yellow: #FFF200;     /* Kulliyyah of Economics */
+    --iium-koed-blue: #005DAC;        /* Kulliyyah of Education */
+    --iium-kirhs-grey: #CAD1D3;       /* Kulliyyah of IRKHS */
+    --iium-koe-maroon: #840715;       /* Kulliyyah of Engineering */
+    --iium-kos-orange: #F6871F;       /* Kulliyyah of Science */
+    --iium-kaed-purple: #7A2A90;      /* Kulliyyah of Architecture */
+    --iium-kom-pink: #F177AE;         /* Kulliyyah of Medicine */
+    --iium-kop-cream: #FFFABE;        /* Kulliyyah of Pharmacy */
+    --iium-kahs-bright-pink: #EC008C; /* Allied Health Sciences */
+    --iium-kon-peach: #FFDDB3;        /* Kulliyyah of Nursing */
+    --iium-kod-dark-purple: #470054;  /* Kulliyyah of Dentistry */
+    --iium-istac-red: #EE202E;        /* ISTAC */
+    --iium-airol-black: #231F20;      /* Ahmad Ibrahim Kulliyyah of Laws */
+
+    /* --- ANIMATION & RADIUS --- */
     --iium-radius-lg: 14px;
     --iium-radius-sm: 8px;
     --iium-ease-spring: cubic-bezier(.34, 1.56, .64, 1);
     --iium-duration: 250ms;
 
     /* Tailwind-compatible color tokens */
+    --background: 0 0% 100%;
+    --foreground: 220 13% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 11%;
+
+    --primary: 142 67% 26%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 45 53% 60%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 220 13% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 142 67% 26% / 0.15;
+    --input: 142 67% 26% / 0.15;
+    --ring: 142 67% 26%;
+
+    --radius: 0.8rem;
+  }
+
+  /* Dark theme variant (opt-in via data-theme attribute) */
+  [data-theme="dark"] {
+    /* --- DARK PRODUCT SURFACE ARCHITECTURE --- */
+    --iium-deep: #030F0D;          /* Deep turquoise-black base background */
+    --iium-surface: #081D1A;       /* Standard component background */
+    --iium-surface-raised: #0F2B26; /* Hover / Active surface */
+
+    /* --- BORDERS & SEMANTICS --- */
+    --iium-border-subtle: rgba(0, 146, 143, 0.2);   /* Using turquoise */
+    --iium-border-active: rgba(213, 159, 15, 0.4);  /* Using gold */
+    --iium-glass: rgba(255, 255, 255, 0.03);
+
+    /* --- TEXT STATES --- */
+    --iium-text-primary: #FFFFFF;
+    --iium-text-secondary: rgba(255, 255, 255, 0.75);
+    --iium-text-muted: rgba(255, 255, 255, 0.45);
+    --iium-text-accent: #D59F0F;
+
+    /* Tailwind-compatible dark theme tokens */
     --background: 180 3% 6%;
     --foreground: 0 0% 100%;
 
@@ -59,8 +133,6 @@
     --border: 142 67% 26% / 0.2;
     --input: 142 67% 26% / 0.2;
     --ring: 142 67% 26%;
-
-    --radius: 0.8rem;
   }
 }
 
@@ -77,6 +149,7 @@
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    transition: background-color var(--iium-duration) ease, color var(--iium-duration) ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -154,7 +227,7 @@
   }
 
   .btn-primary:hover {
-    background: #006b5a;
+    background: #007575; /* Darker turquoise */
     transform: translateY(-2px);
   }
 
@@ -164,7 +237,7 @@
   }
 
   .btn-gold:hover {
-    background: #b89a55;
+    background: #b88a0a; /* Darker gold */
   }
 
   .btn-ghost {
@@ -185,7 +258,7 @@
   }
 
   .btn-outline:hover {
-    background: rgba(0, 134, 112, 0.1);
+    background: rgba(0, 146, 143, 0.1);
   }
 
   .btn-link {
@@ -199,29 +272,37 @@
     text-decoration: underline;
   }
 
-  /* IIUM Card Styles - Exact DLS .iium-card */
+  /* IIUM Card Styles - Light theme optimized */
   .iium-card {
-    background: var(--iium-surface);
+    background: var(--iium-surface-raised);
     border: 1px solid var(--iium-border-subtle);
     border-radius: var(--iium-radius-lg);
     padding: 32px;
     transition: all var(--iium-duration) var(--iium-ease-spring);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
 
   .iium-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--iium-gold);
+    box-shadow: 0 12px 24px rgba(0, 146, 143, 0.1);
+  }
+
+  /* Dark theme card hover */
+  [data-theme="dark"] .iium-card:hover {
     transform: translateY(-8px);
     border-color: var(--iium-gold);
     background: var(--iium-surface-raised);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   }
 
-  /* IIUM Form Control Styles - Exact DLS .form-control */
+  /* IIUM Form Control Styles - Light theme optimized */
   .form-control {
     background: var(--iium-glass);
     border: 1px solid var(--iium-border-subtle);
     padding: 14px;
     border-radius: var(--iium-radius-sm);
-    color: white;
+    color: var(--iium-text-primary);
     width: 100%;
     margin-top: 8px;
     font-family: 'Inter', sans-serif;
@@ -231,11 +312,50 @@
   .form-control:focus {
     border-color: var(--iium-teal);
     outline: none;
+    background: rgba(0, 146, 143, 0.03);
+    box-shadow: 0 0 0 3px rgba(0, 146, 143, 0.1);
+  }
+
+  /* Dark theme form control focus */
+  [data-theme="dark"] .form-control:focus {
     background: rgba(255, 255, 255, 0.05);
   }
 
   .form-control::placeholder {
     color: var(--iium-text-muted);
+  }
+
+  /* IIUM Select Component Styling */
+  select.form-control {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2300928F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 14px center !important;
+    background-size: 16px 16px !important;
+    padding-right: 40px;
+    cursor: pointer;
+    background-color: var(--iium-glass);
+  }
+
+  select.form-control:focus {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23D59F0F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+    border-color: var(--iium-teal) !important;
+    background-color: rgba(0, 146, 143, 0.03) !important;
+    box-shadow: 0 0 0 3px rgba(0, 146, 143, 0.1);
+    outline: none;
+  }
+
+  /* Ensure chevron is always visible */
+  select.form-control option {
+    background: var(--iium-surface-raised);
+    color: var(--iium-text-primary);
+  }
+
+  /* Remove default arrow in IE */
+  select.form-control::-ms-expand {
+    display: none;
   }
 
   /* IIUM Label Styles - Exact DLS .brand-label */

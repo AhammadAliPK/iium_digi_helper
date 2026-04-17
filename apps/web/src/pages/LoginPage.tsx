@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@iium-portal/ui';
 import { Input } from '@iium-portal/ui';
 import { Label } from '@iium-portal/ui';
+import { ThemeToggle } from '../components/ThemeToggle';
 
 interface FormErrors {
   email?: string;
@@ -109,9 +110,12 @@ export default function LoginPage() {
           <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '20px' }}>
             IIUM <span style={{ color: 'var(--iium-gold)' }}>DIGITAL</span>
           </h1>
-          <Button variant="ghost" onClick={() => navigate('/register')}>
-            Create an account
-          </Button>
+          <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+            <ThemeToggle />
+            <Button variant="ghost" onClick={() => navigate('/register')}>
+              Create an account
+            </Button>
+          </div>
         </div>
       </header>
 

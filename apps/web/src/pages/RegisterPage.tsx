@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@iium-portal/ui';
 import { Input } from '@iium-portal/ui';
 import { Label } from '@iium-portal/ui';
+import { Select } from '@iium-portal/ui';
+import { ThemeToggle } from '../components/ThemeToggle';
 
 interface FormErrors {
   email?: string;
@@ -11,6 +13,19 @@ interface FormErrors {
   department?: string;
   general?: string;
 }
+
+const departmentOptions = [
+  { value: 'academic-affairs', label: 'Academic Affairs' },
+  { value: 'ict-department', label: 'ICT Department' },
+  { value: 'finance', label: 'Finance Division' },
+  { value: 'human-resources', label: 'Human Resources' },
+  { value: 'student-affairs', label: 'Student Affairs' },
+  { value: 'research', label: 'Research Centre' },
+  { value: 'library', label: 'Library' },
+  { value: 'international-office', label: 'International Office' },
+  { value: 'quality-assurance', label: 'Quality Assurance' },
+  { value: 'other', label: 'Other' }
+];
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -113,7 +128,7 @@ export default function RegisterPage() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     // Clear error for this field when user starts typing
@@ -151,9 +166,12 @@ export default function RegisterPage() {
           <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '20px' }}>
             IIUM <span style={{ color: 'var(--iium-gold)' }}>DIGITAL</span>
           </h1>
-          <Button variant="ghost" onClick={() => navigate('/login')}>
-            Already have an account?
-          </Button>
+          <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+            <ThemeToggle />
+            <Button variant="ghost" onClick={() => navigate('/login')}>
+              Already have an account?
+            </Button>
+          </div>
         </div>
       </header>
 
@@ -224,15 +242,20 @@ export default function RegisterPage() {
             {/* Department Field */}
             <div>
               <Label htmlFor="department">Department *</Label>
-              <Input
+              <Select
                 id="department"
                 name="department"
-                type="text"
-                placeholder="e.g., Academic Affairs, ICT Department"
                 value={formData.department}
                 onChange={handleChange}
                 className={errors.department ? 'error' : ''}
-              />
+              >
+                <option value="">Select Department</option>
+                {departmentOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </Select>
               {errors.department && (
                 <p style={{ color: '#ff4d4d', fontSize: '12px', marginTop: '8px' }}>
                   {errors.department}

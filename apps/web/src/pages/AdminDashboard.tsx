@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Button } from '@iium-portal/ui';
-import { Card, CardDescription, CardTitle } from '@iium-portal/ui';
+import { Button, Card } from '@iium-portal/ui';
+import { ThemeToggle } from '../components/ThemeToggle';
 
 interface AnalyticsData {
   totalRequests: number;
@@ -79,6 +79,7 @@ export default function AdminDashboard() {
             <Button variant="ghost" onClick={() => window.location.href = '/logout'}>
               Logout
             </Button>
+            <ThemeToggle />
           </div>
         </div>
       </header>
