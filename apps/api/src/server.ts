@@ -2,6 +2,7 @@ import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import cookie from '@fastify/cookie';
 import { authRoutes } from './routes/auth.routes.js';
+import { adminRoutes } from './routes/admin.routes.js';
 
 const fastify = Fastify({
   logger: true
@@ -29,6 +30,9 @@ fastify.get('/api/v1/health', async () => {
 
 // Register authentication routes
 await fastify.register(authRoutes, { prefix: '/api/v1/auth' });
+
+// Register admin routes
+await fastify.register(adminRoutes, { prefix: '/api/v1/admin' });
 
 // Start server
 const start = async () => {

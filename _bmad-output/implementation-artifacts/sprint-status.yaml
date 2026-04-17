@@ -59,14 +59,21 @@ development_status:
   epic-1-retrospective: optional
 
   # Epic 2: Request Submission
-  epic-2: backlog
-  2-1-database-schema-requests: backlog
+  epic-2: in-progress
+  2-1-database-schema-requests: done
   2-2-request-form-progressive-disclosure: backlog
   2-3-request-type-system-selection: backlog
   2-4-request-details-validation: backlog
   2-5-file-upload-attachments: backlog
   2-6-request-submission-email-confirmation: backlog
   epic-2-retrospective: optional
+
+  # Epic 5: Analytics & Administration (Phase 2)
+  epic-5: in-progress
+  5-1-admin-analytics-dashboard: done
+  5-2-request-breakdown-reports: backlog
+  5-3-admin-user-management: backlog
+  epic-5-retrospective: optional
 
   # Epic 3: Request Management & Triage
   epic-3: backlog

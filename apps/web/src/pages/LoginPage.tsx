@@ -70,8 +70,10 @@ export default function LoginPage() {
             navigate('/dashboard/requester');
             break;
           case 'HANDLER':
-          case 'ADMIN':
             navigate('/dashboard/handler');
+            break;
+          case 'ADMIN':
+            navigate('/dashboard/admin');
             break;
           default:
             navigate('/dashboard');
