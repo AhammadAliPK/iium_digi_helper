@@ -1,5 +1,6 @@
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
+import { authRoutes } from './routes/auth.routes.js';
 
 const fastify = Fastify({
   logger: true
@@ -15,6 +16,9 @@ await fastify.register(cors, {
 fastify.get('/api/v1/health', async () => {
   return { status: 'ok', message: 'IIUM Change Request Portal API is running' };
 });
+
+// Register authentication routes
+await fastify.register(authRoutes, { prefix: '/api/v1/auth' });
 
 // Start server
 const start = async () => {
