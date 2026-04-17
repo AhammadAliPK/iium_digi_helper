@@ -438,9 +438,12 @@ Configure shadcn/ui with IIUM design tokens:
     extend: {
       colors: {
         iium: {
-          teal: '#008670',
-          gold: '#CDB067',
+          turquoise: '#00928F', // PANTONE 7716 C - Official IIUM Turquoise
+          gold: '#D59F0F',      // PANTONE 7555 C - Official IIUM Gold
+          black: '#000000',
+          white: '#FFFFFF',
           dark: '#030F0D',
+          // Kulliyyah accent colours...
         }
       },
       fontFamily: {
@@ -476,9 +479,9 @@ Create IIUM-specific components not in shadcn/ui:
 
 **Design Token Mapping:**
 
-| IIUM DLS Token | Tailwind Variable | Usage |
+| IIUM VIS Token | Tailwind Variable | Usage |
 |----------------|-------------------|-------|
-| Teal Primary | `--color-iium-teal` | Primary actions, links, emphasis |
+| Turquoise Primary | `--color-iium-turquoise` | Primary actions, links, emphasis |
 | Gold Accent | `--color-iium-gold` | Secondary actions, highlights |
 | Deep Background | `--color-iium-dark` | Footer, deep backgrounds |
 | Roboto Slab | `--font-heading` | Page titles, section headings |
@@ -490,16 +493,16 @@ Create IIUM-specific components not in shadcn/ui:
 - **Status Badges:** Semantic colors mapped to workflow states
   - Open: Gray (neutral)
   - In Progress: Blue (active work)
-  - Resolved: Teal (success, brand-aligned)
+  - Resolved: Turquoise (success, brand-aligned)
   - Closed: Dark (finalized)
 
 - **Buttons:** Clear visual hierarchy
-  - Primary: Teal background, white text (main actions)
+  - Primary: Turquoise background, white text (main actions)
   - Secondary: Gold background, dark text (accent actions)
-  - Ghost: Transparent background, teal text (subtle actions)
+  - Ghost: Transparent background, turquoise text (subtle actions)
 
 - **Form Fields:** Clean, accessible design
-  - Focus ring: Teal (brand-aligned, accessible)
+  - Focus ring: Turquoise (brand-aligned, accessible)
   - Error state: Red (standard pattern)
   - Help text: Gray (subtle guidance)
 
@@ -753,22 +756,22 @@ Every status change triggers an automatic email with:
 
 ### Color System
 
-**IIUM Brand Colors:**
+**IIUM Brand Colors (Official Visual Identity System 2021):**
 
-| Color | Hex | Usage |
-|-------|-----|-------|
-| **Teal (Primary)** | #008670 | Primary actions, links, emphasis, brand identity |
-| **Gold (Accent)** | #CDB067 | Secondary actions, highlights, visual interest |
-| **Deep Background** | #030F0D | Footer, deep backgrounds, high contrast areas |
+| Color | Hex | Pantone | Usage |
+|-------|-----|---------|-------|
+| **Turquoise (Primary)** | #00928F | PANTONE 7716 C | Primary actions, links, emphasis, brand identity |
+| **Gold (Accent)** | #D59F0F | PANTONE 7555 C | Secondary actions, highlights, visual interest |
+| **Deep Background** | #030F0D | Custom | Footer, deep backgrounds, high contrast areas |
 
 **Semantic Color Mapping:**
 
 | Semantic | Hex | Usage |
 |----------|-----|-------|
-| **Primary** | #008670 (Teal) | Main CTAs, active states, key interactions |
-| **Secondary** | #CDB067 (Gold) | Secondary CTAs, highlights, accents |
-| **Success** | #008670 (Teal) | Success states, resolved status, completion |
-| **Warning** | #CDB067 (Gold) | Medium urgency, attention needed |
+| **Primary** | #00928F (Turquoise) | Main CTAs, active states, key interactions |
+| **Secondary** | #D59F0F (Gold) | Secondary CTAs, highlights, accents |
+| **Success** | #00928F (Turquoise) | Success states, resolved status, completion |
+| **Warning** | #D59F0F (Gold) | Medium urgency, attention needed |
 | **Error** | #DC2626 (Red) | Error states, critical urgency, validation failures |
 | **Info** | #3B82F6 (Blue) | Information, in-progress status, neutral feedback |
 | **Neutral** | #6B7280 (Gray) | Open status, disabled states, subtle text |
@@ -779,15 +782,15 @@ Every status change triggers an automatic email with:
 |--------|-------|-----------|
 | **Open** | Gray (#6B7280) | Neutral — awaiting triage |
 | **In Progress** | Blue (#3B82F6) | Active — work is happening |
-| **Resolved** | Teal (#008670) | Success — brand-aligned completion |
+| **Resolved** | Turquoise (#00928F) | Success — brand-aligned completion |
 | **Closed** | Dark (#030F0D) | Finalized — complete workflow |
 
 **Accessibility Compliance:**
 
-- Teal on White: Contrast ratio ≥ 4.5:1 (WCAG AA compliant)
+- Turquoise on White: Contrast ratio ≥ 4.5:1 (WCAG AA compliant)
 - Gold on Dark: Use dark text for contrast (gold as background)
 - Red/Blue for Status: Standard semantic colors, accessibility-tested
-- Focus States: Teal ring (2px) — visible, brand-aligned, accessible
+- Focus States: Turquoise ring (2px) — visible, brand-aligned, accessible
 
 ### Typography System
 
@@ -1421,7 +1424,7 @@ Request History
 |--------|-------|------------|------|
 | Open | Gray (#6B7280) | #F3F4F6 | #374151 |
 | In Progress | Blue (#3B82F6) | #DBEAFE | #1E40AF |
-| Resolved | Teal (#008670) | #D1FAE5 | #065F46 |
+| Resolved | Turquoise (#00928F) | #D1FAE5 | #065F46 |
 | Closed | Dark (#030F0D) | #1F2937 | #F9FAFB |
 
 **Variants:**
@@ -1551,16 +1554,16 @@ Request History
 
 | Button Type | Background | Text | Border |
 |-------------|------------|------|--------|
-| Primary | Teal (#008670) | White | None |
-| Secondary | Gold (#CDB067) | Dark (#030F0D) | None |
-| Ghost | Transparent | Teal (#008670) | None |
+| Primary | Turquoise (#00928F) | White | None |
+| Secondary | Gold (#D59F0F) | Dark (#030F0D) | None |
+| Ghost | Transparent | Turquoise (#00928F) | None |
 | Destructive | Red (#DC2626) | White | None |
 
 **Behavior:**
 
 - Hover: Background darkens by 10%
 - Active: Background darkens by 20%
-- Focus: 2px teal ring (#008670)
+- Focus: 2px turquoise ring (#00928F)
 - Disabled: 50% opacity, no pointer events
 - Loading: Spinner replaces text, button remains same size
 
@@ -1583,7 +1586,7 @@ Request History
 
 **Success Feedback:**
 
-**Visual:** Teal background (#D1FAE5), dark teal text (#065F46), checkmark icon
+**Visual:** Turquoise background (#D1FAE5), dark turquoise text (#065F46), checkmark icon
 
 **When to Use:**
 - Request submitted successfully
@@ -1708,10 +1711,10 @@ Request History
 
 | State | Visual |
 |-------|--------|
-| Default | Teal text, transparent background |
-| Hover | Teal background (#D1FAE5), teal text |
-| Active | Teal text, bold, bottom border (2px) |
-| Focus | Teal ring (2px) |
+| Default | Turquoise text, transparent background |
+| Hover | Turquoise background (#D1FAE5), turquoise text |
+| Active | Turquoise text, bold, bottom border (2px) |
+| Focus | Turquoise ring (2px) |
 
 **Breadcrumb Navigation:**
 

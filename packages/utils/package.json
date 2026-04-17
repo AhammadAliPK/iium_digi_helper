@@ -1,0 +1,18 @@
+{
+  "name": "@iium-portal/utils",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "tsc --noEmit",
+    "clean": "rm -rf dist node_modules .turbo"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@iium-portal/config": "workspace:*",
+    "typescript": "^5.8.0"
+  }
+}

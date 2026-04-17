@@ -1,0 +1,141 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enum for user roles
+enum UserRole {
+  REQUESTER
+  HANDLER
+  ADMIN
+}
+
+// Users table - stores user account information
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String    @map("password_hash")
+  name         String
+  department   String
+  role         UserRole  @default(REQUESTER)
+  isActive     Boolean   @default(true) @map("is_active")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  // Relations
+  passwordResetTokens PasswordResetToken[]
+  assignedRequests    Request[]          @relation("AssignedDeveloper")
+  createdRequests     Request[]          @relation("RequestCreator")
+
+  @@index([email])
+  @@map("users")
+}
+
+// Password reset tokens table
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  userId    String    @map("user_id")
+  token     String    @unique
+  expiresAt DateTime  @map("expires_at")
+  used      Boolean   @default(false)
+  createdAt DateTime  @default(now()) @map("created_at")
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+  @@map("password_reset_tokens")
+}
+
+// Enum for request types
+enum RequestType {
+  BUG
+  ENHANCEMENT
+  FORM_CHANGE
+  REPORT_CHANGE
+  WORKFLOW_IMPROVEMENT
+}
+
+// Enum for urgency levels
+enum UrgencyLevel {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+// Enum for request status
+enum RequestStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+// Requests table
+model Request {
+  id                String        @id @default(cuid())
+  requestNumber     String        @unique @map("request_number")
+  userId            String        @map("user_id")
+  requestType       RequestType   @map("request_type")
+  urgency           UrgencyLevel
+  systemAffected    String        @map("system_affected")
+  title             String
+  description       String        @db.Text
+  status            RequestStatus @default(OPEN)
+  assignedToUserId  String?       @map("assigned_to_user_id")
+  createdAt         DateTime      @default(now()) @map("created_at")
+  updatedAt         DateTime      @updatedAt @map("updated_at")
+
+  // Relations
+  user        User              @relation("RequestCreator", fields: [userId], references: [id])
+  assignedTo  User?             @relation("AssignedDeveloper", fields: [assignedToUserId], references: [id])
+  attachments Attachment[]
+  history     RequestHistory[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("requests")
+}
+
+// Attachments table
+model Attachment {
+  id        String   @id @default(cuid())
+  requestId String   @map("request_id")
+  filename  String
+  filePath  String   @map("file_path")
+  fileSize  Int      @map("file_size")
+  fileType  String   @map("file_type")
+  uploadedAt DateTime @default(now()) @map("uploaded_at")
+
+  // Relations
+  request Request @relation(fields: [requestId], references: [id], onDelete: Cascade)
+
+  @@map("attachments")
+}
+
+// Request history table - tracks all status changes and comments
+model RequestHistory {
+  id          String    @id @default(cuid())
+  requestId   String    @map("request_id")
+  userId      String    @map("user_id")
+  fieldType   String?   @map("field_type") // 'status', 'comment', 'assignment', etc.
+  oldValue    String?   @map("old_value")
+  newValue    String?   @map("new_value")
+  comment     String?   @db.Text
+  createdAt   DateTime  @default(now()) @map("created_at")
+
+  // Relations
+  request Request @relation(fields: [requestId], references: [id], onDelete: Cascade)
+
+  @@index([requestId])
+  @@index([createdAt])
+  @@map("request_history")
+}
