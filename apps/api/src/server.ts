@@ -1,15 +1,25 @@
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
+import cookie from '@fastify/cookie';
 import { authRoutes } from './routes/auth.routes.js';
 
 const fastify = Fastify({
   logger: true
 });
 
-// Register CORS
+// Register CORS with credentials support
 await fastify.register(cors, {
-  origin: true,
-  credentials: true
+  origin: ['http://localhost:3000', 'http://localhost:3002', 'http://localhost:3003'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+});
+
+// Register cookie support
+await fastify.register(cookie, {
+  secret: process.env.COOKIE_SECRET || 'iium-digital-cookie-secret-key',
+  hook: 'onRequest',
+  parseOptions: {}
 });
 
 // Health check route
