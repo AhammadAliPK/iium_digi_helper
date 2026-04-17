@@ -1,0 +1,23 @@
+{
+  "name": "@iium-portal/database",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "prisma generate",
+    "push": "prisma db push",
+    "migrate": "prisma migrate dev",
+    "seed": "tsx prisma/seed.ts",
+    "studio": "prisma studio",
+    "clean": "rm -rf node_modules .turbo"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.2.0"
+  },
+  "devDependencies": {
+    "@iium-portal/config": "workspace:*",
+    "prisma": "^6.2.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.8.0"
+  }
+}

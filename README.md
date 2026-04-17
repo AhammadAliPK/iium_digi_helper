@@ -26,7 +26,7 @@ pnpm install
 cp .env.example .env
 
 # Run database migrations
-pnpm --filter @repo/database prisma migrate dev
+pnpm --filter @iium-portal/database prisma migrate dev
 
 # Start development
 pnpm dev
@@ -128,9 +128,9 @@ pnpm --filter web build
 pnpm --filter api build
 
 # Database
-pnpm --filter @repo/database prisma studio    # Open Prisma Studio
-pnpm --filter @repo/database prisma migrate dev  # Run migrations
-pnpm --filter @repo/database prisma generate     # Generate Prisma Client
+pnpm --filter @iium-portal/database prisma studio    # Open Prisma Studio
+pnpm --filter @iium-portal/database prisma migrate dev  # Run migrations
+pnpm --filter @iium-portal/database prisma generate     # Generate Prisma Client
 
 # Testing & Quality
 pnpm test             # Run all tests

@@ -1,0 +1,15 @@
+{
+  "name": "@iium-portal/config",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "clean": "rm -rf node_modules .turbo"
+  },
+  "files": [
+    "eslint-config.js",
+    "tsconfig.json",
+    "tailwind.config.js",
+    "prettier-config.js"
+  ]
+}

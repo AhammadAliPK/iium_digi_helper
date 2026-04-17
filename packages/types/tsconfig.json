@@ -1,0 +1,11 @@
+{
+  "extends": "@iium-portal/config/tsconfig",
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src"]
+}
